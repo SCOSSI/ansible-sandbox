@@ -1,0 +1,12 @@
+---
+- hosts: machine2
+  vars:
+    http_port: 80
+    max_clients: 10
+  remote_user: vagrant
+
+  tasks:
+  - name: ensure postgresql is at the latest version
+    apt: name=postgresql state=latest
+  - name: ensure that postgresql is started
+    service: name=postgresql state=started

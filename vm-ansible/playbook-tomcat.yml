@@ -1,0 +1,16 @@
+- hosts: machine2
+  vars:
+    http_port: 80
+    max_clients: 200
+  remote_user: vagrant
+
+  tasks:
+    - name: update packages
+      apt:  update
+    - name: install java 
+      apt: name=default-jdk state=latest
+    - name: install tomcat
+      apt: name=tomcat7 state=latest
+    - name: make sure apache is running
+      service: name=tomcat7 state=started
+   
